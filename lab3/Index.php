@@ -22,3 +22,79 @@ require_once 'process.php';  // This will process POST if submitted
 <body>
 
 <h1>Contact Us</h1>
+
+<?php if ($success): ?>
+  <div class="success">
+    <strong>Thank you!</strong> Your message has been sent successfully.<br>
+    We'll get back to you soon.
+  </div>
+<?php endif; ?>
+
+<?php if (!empty($errors)): ?>
+  <div style="color:#d32f2f; background:#ffebee; padding:1rem; border-radius:6px; margin-bottom:1.5rem;">
+    <strong>Please fix the following errors:</strong>
+    <ul style="margin:0.5rem 0 0 1.2rem; padding-left:0;">
+      <?php foreach ($errors as $err): ?>
+        <li><?= htmlspecialchars($err) ?></li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+<?php endif; ?>
+
+<form method="post" action="process.php" novalidate>
+  <!-- Honeypot spam trap -->
+  <div class="honeypot">
+    <label for="website_url">Website (leave empty)</label>
+    <input type="text" name="website_url" id="website_url" tabindex="-1" autocomplete="off">
+  </div>
+
+  <label for="first_name">First Name *</label>
+  <input 
+    type="text" 
+    id="first_name" 
+    name="first_name" 
+    value="<?= htmlspecialchars($form_data['first_name']) ?>"
+    required 
+    minlength="2" 
+    maxlength="50"
+    placeholder="John"
+  >
+
+  <label for="last_name">Last Name *</label>
+  <input 
+    type="text" 
+    id="last_name" 
+    name="last_name" 
+    value="<?= htmlspecialchars($form_data['last_name']) ?>"
+    required 
+    minlength="2" 
+    maxlength="50"
+    placeholder="Smith"
+  >
+
+  <label for="email">Email Address *</label>
+  <input 
+    type="email" 
+    id="email" 
+    name="email" 
+    value="<?= htmlspecialchars($form_data['email']) ?>"
+    required 
+    placeholder="john@example.com"
+  >
+
+  <label for="message">Message *</label>
+  <textarea 
+    id="message" 
+    name="message" 
+    rows="6" 
+    required 
+    minlength="10" 
+    maxlength="2000"
+    placeholder="How can we help you?"
+  ><?= htmlspecialchars($form_data['message']) ?></textarea>
+
+  <button type="submit">Send Message</button>
+</form>
+
+</body>
+</html>
