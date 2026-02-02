@@ -62,3 +62,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!empty($_POST['website_url'])) {
         $errors[] = "Invalid submission detected.";
     }
+    // If no errors → send email
+    if (empty($errors)) {
+        $body  = "New contact form submission\n\n";
+        $body .= "Name:    $first_name $last_name\n";
+        $body .= "Email:   $email\n";
+        $body .= "Message:\n$message\n\n";
+        $body .= "Sent from: " . ($_SERVER['HTTP_HOST'] ?? 'unknown') . " (" . date('Y-m-d H:i:s') . ")";
+
+        $headers  = "From: " . FROM_NAME . " <no-reply@" . FROM_EMAIL_DOMAIN . ">\r\n";
+        $headers .= "Reply-To: $email\r\n";
+        $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+        if (mail(TO_EMAIL, EMAIL_SUBJECT, $body, $headers)) {
+            $success = true;
+            // Clear form data after success
+            $form_data = ['first_name' => '', 'last_name' => '', 'email' => '', 'message' => ''];
+            // $_SESSION['success'] = true;
+        } else {
+            $errors[] = "Sorry, there was a problem sending your message. Please try again later.";
+        }
+    }
+
+   
+}
