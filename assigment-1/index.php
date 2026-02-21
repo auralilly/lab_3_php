@@ -4,3 +4,25 @@ require 'config.php';
 // Our success message is here yippee, hopefully
 $msg = $_GET['msg'] ?? '';
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container py-5">
+
+  <h1 class="mb-4">Basketball Team Tracker</h1>
+<!-- messages for each addition, update, or termination -->
+  <?php if ($msg === 'added'): ?>
+    <div class="alert alert-success">Member added successfully.</div>
+  <?php elseif ($msg === 'updated'): ?>
+    <div class="alert alert-success">Member updated successfully.</div>
+  <?php elseif ($msg === 'deleted'): ?>
+    <div class="alert alert-success">Member deleted successfully.</div>
+  <?php endif; ?>
