@@ -2,10 +2,10 @@
 require 'config.php';
 
 //goes looking for the id
-if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+
     header("Location: index.php");
     exit;
-}
+$id = $_GET['id'];
 // sql query for the team members id
 $stmt = $pdo->prepare("SELECT * FROM team_members WHERE id = ?");
 $stmt->execute([$id]);
