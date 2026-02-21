@@ -26,3 +26,30 @@ $msg = $_GET['msg'] ?? '';
   <?php elseif ($msg === 'deleted'): ?>
     <div class="alert alert-success">Member deleted successfully.</div>
   <?php endif; ?>
+
+  <p class="mb-4">
+    <a href="create.php" class="btn btn-primary">+ Add New Member</a>
+  </p>
+
+  <?php
+  $stmt = $pdo->query("SELECT * FROM team_members ORDER BY last_name, first_name");
+  $members = $stmt->fetchAll();
+
+  if (empty($members)):
+  ?>
+    <div class="alert alert-info">No team members added yet.</div>
+  <?php else: ?>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Position</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Team</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
