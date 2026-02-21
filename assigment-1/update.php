@@ -1,17 +1,16 @@
 <?php
 require 'config.php';
 
+//goes looking for the id
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     header("Location: index.php");
     exit;
 }
-
-$id = (int)$_GET['id'];
-
+// sql query for the team members id
 $stmt = $pdo->prepare("SELECT * FROM team_members WHERE id = ?");
 $stmt->execute([$id]);
 $row = $stmt->fetch();
-
+//Lets me know if we found the member
 if (!$row) {
     header("Location: index.php");
     exit;
