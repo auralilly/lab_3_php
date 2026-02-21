@@ -10,7 +10,7 @@ $id = $_GET['id'];
 $stmt = $pdo->prepare("SELECT * FROM team_members WHERE id = ?");
 $stmt->execute([$id]);
 $row = $stmt->fetch();
-//Lets me know if we found the member
+//Lets me know if we found the member, or i guess in this cae if we didn't find him
 if (!$row) {
     header("Location: index.php");
     exit;
