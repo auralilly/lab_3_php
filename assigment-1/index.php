@@ -53,3 +53,31 @@ $msg = $_GET['msg'] ?? '';
             <th>Actions</th>
           </tr>
         </thead>
+        <tbody>
+          <?php $i = 1; foreach ($members as $row): ?>
+            <tr>
+              <td><?= $i++ ?></td>
+              <td><?= htmlspecialchars($row['first_name']) ?></td>
+              <td><?= htmlspecialchars($row['last_name']) ?></td>
+              <td><?= htmlspecialchars($row['position'] ?: '—') ?></td>
+              <td><?= htmlspecialchars($row['phone'] ?: '—') ?></td>
+              <td><?= htmlspecialchars($row['email']) ?></td>
+              <td><?= htmlspecialchars($row['team_name']) ?></td>
+              <td>
+                <a href="update.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-warning">Edit</a>
+                <a href="delete.php?id=<?= $row['id'] ?>" 
+                   onclick="return confirm('Delete this member?');"
+                   class="btn btn-sm btn-danger">Delete</a>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+  <?php endif; ?>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
