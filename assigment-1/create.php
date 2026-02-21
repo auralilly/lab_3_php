@@ -15,3 +15,42 @@
 
   <form action="process.php" method="post" class="card p-4 shadow-sm">
     <input type="hidden" name="action" value="create">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">First Name *</label>
+        <input type="text" name="first_name" class="form-control" required minlength="2">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Last Name *</label>
+        <input type="text" name="last_name" class="form-control" required minlength="2">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Position</label>
+        <select name="position" class="form-select">
+          <option value="">— Select —</option>
+          <option>Point Guard</option>
+          <option>Shooting Guard</option>
+          <option>Small Forward</option>
+          <option>Power Forward</option>
+          <option>Center</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Phone</label>
+        <input type="tel" name="phone" class="form-control">
+      </div>
+      <div class="col-12">
+        <label class="form-label">Email *</label>
+        <input type="email" name="email" class="form-control" required>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Team Name *</label>
+        <input type="text" name="team_name" class="form-control" required minlength="2">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4">Save Member</button>
+  </form>
+</div>
+</body>
+</html>
