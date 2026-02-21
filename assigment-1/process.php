@@ -108,3 +108,6 @@ elseif ($action === 'update' && $id > 0) {
 header("Location: index.php");
 exit;
 //So for this project i was a lot of love, and hate with the update that i put a placeholder code till i reviewed some old lectures. no clue if it would work with them, but i just wanted to stop seeing errors. The easiest part by far was the sql. Not giving me much trouble. though i will say losing the code was a night mare, and having to redo it all was stressful to say the least as it had gotten corrupted. though thats my little reflection hope the project is nice to you like it was not to me.
+
+//citations https://www.php.net/manual/en/function.is-numeric.php 
+// https://www.php.net/manual/en/function.isset.php where i found the place holders, and how to remember some things
