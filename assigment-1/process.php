@@ -112,3 +112,4 @@ exit;
 //citations https://www.php.net/manual/en/function.is-numeric.php 
 // https://www.php.net/manual/en/function.isset.php where i found the place holders, and how to remember some things
 //https://www.php.net/manual/en/control-structures.foreach.php
+//note this is what i use for lab 3
