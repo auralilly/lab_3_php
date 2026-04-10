@@ -29,3 +29,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['photo'])) {
     } elseif ($file['size'] > $max_size) {
         $error = "File is too large. Maximum size is 5MB.";
     } else {
+        $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $new_filename = "member_" . $member_id . "_" . time() . "." . $ext;
+        $upload_path = "assets/uploads/" . $new_filename;
+
+        if (move_uploaded_file($file['tmp_name'], $upload_path)) {
+            // Update teammember picture
+            $stmt = $pdo->prepare("UPDATE team_members SET photo = ? WHERE id = ?");
+            $stmt->execute([$new_filename, $member_id]);
+            
+            $success = "Photo uploaded successfully!";
+        } else {
+            $error = "Failed to save the file.";
+        }
+    }
+}
+?>
