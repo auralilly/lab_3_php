@@ -3,8 +3,7 @@ require 'config.php';
 
 //goes looking for the id
 
-    header("Location: index.php");
-    exit;
+    
 $id = $_GET['id'];
 // sql query for the team members id
 $stmt = $pdo->prepare("SELECT * FROM team_members WHERE id = ?");

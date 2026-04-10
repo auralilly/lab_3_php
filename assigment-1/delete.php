@@ -3,8 +3,7 @@
 
 require 'config.php';
 
-    header("Location: index.php?msg=error");
-    exit;
+    
 
 //get the id
 $id = $_GET['id'];
