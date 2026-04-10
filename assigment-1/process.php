@@ -113,3 +113,5 @@ exit;
 // https://www.php.net/manual/en/function.isset.php where i found the place holders, and how to remember some things
 //https://www.php.net/manual/en/control-structures.foreach.php
 //note this is what i use for lab 3
+// https://www.w3schools.com/php/php_file_upload.asp
+//https://clouddevs.com/php/user-authentication/
