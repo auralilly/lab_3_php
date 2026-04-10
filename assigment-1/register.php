@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="col-md-6">
       <h2 class="mb-4 text-center">Create Account</h2>
 
+       <!-- you messed up and heres your proof-->
       <?php if (!empty($errors)): ?>
         <div class="alert alert-danger">
           <?php foreach ($errors as $error): ?>
