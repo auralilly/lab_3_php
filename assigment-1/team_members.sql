@@ -8,3 +8,5 @@ CREATE TABLE team_members (
     team_name   VARCHAR(100) NOT NULL,
     created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 );
+ALTER TABLE team_members 
+ADD COLUMN photo VARCHAR(255) DEFAULT NULL AFTER team_name;
