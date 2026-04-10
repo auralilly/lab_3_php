@@ -59,3 +59,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['photo'])) {
   <h2>Upload Photo for <?= htmlspecialchars($member['first_name'] . ' ' . $member['last_name']) ?></h2>
   
   <a href="index.php" class="btn btn-secondary mb-4">← Back to Team</a>
+  <?php if ($success): ?>
+    <div class="alert alert-success"><?= $success ?></div>
+  <?php endif; ?>
+
+  <?php if ($error): ?>
+    <div class="alert alert-danger"><?= $error ?></div>
+  <?php endif; ?>
+
+  <div class="card p-4 shadow-sm">
+    <form method="POST" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label">Choose Photo</label>
+        <input type="file" name="photo" class="form-control" accept="image/*" required>
+        <small class="text-muted">Allowed: JPG, PNG, GIF, WebP (max 5MB)</small>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Upload Photo</button>
+    </form>
+  </div>
+
+  <?php if (!empty($member['photo'])): ?>
+    <div class="mt-4">
+      <h5>Current Photo:</h5>
+      <img src="assets/uploads/<?= htmlspecialchars($member['photo']) ?>" 
+           alt="Current photo" class="img-fluid rounded shadow" style="max-width: 300px;">
+    </div>
+  <?php endif; ?>
+</div>
+
+</body>
+</html>
