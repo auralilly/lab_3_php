@@ -40,3 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="row justify-content-center">
     <div class="col-md-6">
       <h2 class="mb-4 text-center">Create Account</h2>
+
+      <?php if (!empty($errors)): ?>
+        <div class="alert alert-danger">
+          <?php foreach ($errors as $error): ?>
+            <p class="mb-1">• <?= htmlspecialchars($error) ?></p>
+          <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
